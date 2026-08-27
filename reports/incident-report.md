@@ -148,7 +148,6 @@ This represents suspicious post-compromise mailbox manipulation.
 |---|---|---|
 | Valid Accounts | T1078 | Successful authentication using the compromised executive account |
 | Account Manipulation | T1098 | Additional Authenticator security information registered after compromise |
-| Email Collection / Mailbox Activity | T1114 | Outlook Web access and suspicious mailbox-rule activity |
 
 The ATT&CK mappings describe observed or strongly supported behavior. The investigation does not claim that email contents were successfully exfiltrated.
 
