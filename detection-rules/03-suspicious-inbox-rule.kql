@@ -1,0 +1,13 @@
+// Detect suspicious mailbox inbox-rule creation
+
+CloudoraAudit_CL
+| where ActivityDisplayName contains "inbox rule"
+| project
+    TimeGenerated,
+    ActivityDisplayName,
+    InitiatedBy,
+    TargetUser,
+    IPAddress,
+    Result,
+    Details
+| sort by TimeGenerated desc

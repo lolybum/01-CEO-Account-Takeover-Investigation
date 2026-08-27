@@ -306,6 +306,37 @@ This project demonstrates practical experience with:
 
 ---
 
+## 🚨 Detection Engineering
+
+Following the investigation, reusable KQL detection logic was developed to identify similar account-compromise activity.
+
+### Multi-Account Failed Authentication Detection
+
+The detection analyzes failed authentication activity by source IP and identifies IP addresses targeting multiple user accounts.
+
+Testing the rule against the Cloudora sign-in telemetry identified the incident IP `102.89.44.17` as the highest-volume source observed by the rule:
+
+| Metric | Result |
+|---|---:|
+| Source IP | `102.89.44.17` |
+| Failed Authentication Attempts | 48 |
+| Distinct Targeted Accounts | 23 |
+
+![Multi-Account Detection Rule](screenshots/detection/08-multi-account-detection-rule.png)
+
+The result demonstrates that the detection can surface broad multi-account authentication activity for analyst investigation. Detection results require contextual validation and should not be treated as proof of malicious activity by themselves.
+
+### Detection Rules
+
+The project includes reusable KQL detections for:
+
+- Suspicious successful executive sign-ins from unexpected locations
+- Security-information / Authenticator registration
+- Suspicious inbox-rule creation
+- Multi-account failed-authentication activity
+
+Detection logic is maintained in the [`detection-rules/`](detection-rules/) directory.
+
 # 📄 Investigation Conclusion
 
 The investigation confirms compromise of the Cloudora CEO account.

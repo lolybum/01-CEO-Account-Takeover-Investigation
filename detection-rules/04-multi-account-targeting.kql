@@ -1,0 +1,14 @@
+// Detect a single IP generating failed authentication attempts
+// against multiple user accounts
+
+CloudoraSignIn_CL
+| where ResultType != "0"
+| summarize
+    FailedAttempts = count(),
+    TargetedAccounts = dcount(UserPrincipalName),
+    Accounts = make_set(UserPrincipalName, 50),
+    FirstSeen = min(TimeGenerated),
+    LastSeen = max(TimeGenerated)
+    by IPAddress
+| where TargetedAccounts >= 3
+| sort by TargetedAccounts desc

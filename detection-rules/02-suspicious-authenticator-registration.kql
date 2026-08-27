@@ -1,0 +1,13 @@
+// Detect security-information / Authenticator registration activity
+
+CloudoraAudit_CL
+| where ActivityDisplayName contains "registered security"
+| project
+    TimeGenerated,
+    ActivityDisplayName,
+    InitiatedBy,
+    TargetUser,
+    IPAddress,
+    Result,
+    Details
+| sort by TimeGenerated desc

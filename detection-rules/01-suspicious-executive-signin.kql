@@ -1,0 +1,21 @@
+// Detect successful executive sign-ins from unusual locations or IPs
+
+let ExecutiveAccounts = dynamic([
+    "daniel.reeve@cloudora.io"
+]);
+
+CloudoraSignIn_CL
+| where UserPrincipalName in~ (ExecutiveAccounts)
+| where ResultType == "0"
+| where Country !~ "United Kingdom"
+| project
+    TimeGenerated,
+    UserPrincipalName,
+    IPAddress,
+    City,
+    Country,
+    AppDisplayName,
+    DeviceOS,
+    Browser,
+    ResultDescription
+| sort by TimeGenerated desc
