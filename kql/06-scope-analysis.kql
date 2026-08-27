@@ -1,0 +1,39 @@
+// ============================================================
+// 06 - Scope Analysis
+// CEO Account Takeover Investigation
+// Suspicious IP: 102.89.44.17
+// ============================================================
+
+// Identify all accounts targeted by the suspicious IP
+// and determine whether authentication succeeded.
+
+CloudoraSignIn_CL
+| where IPAddress == "102.89.44.17"
+| summarize
+    TotalAttempts = count(),
+    Successful = countif(ResultType == "0"),
+    Failed = countif(ResultType != "0"),
+    FirstSeen = min(TimeGenerated),
+    LastSeen = max(TimeGenerated)
+    by UserPrincipalName
+| sort by TotalAttempts desc
+
+
+// Query 2 - Successful authentications from suspicious IP
+// Determines which targeted accounts were actually accessed.
+
+CloudoraSignIn_CL
+| where IPAddress == "102.89.44.17"
+| where ResultType == "0"
+| project
+    TimeGenerated,
+    UserPrincipalName,
+    IPAddress,
+    City,
+    Country,
+    AppDisplayName,
+    ResultType,
+    ResultDescription,
+    DeviceOS,
+    Browser
+| sort by TimeGenerated asc

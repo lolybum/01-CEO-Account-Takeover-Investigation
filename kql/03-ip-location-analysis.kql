@@ -1,0 +1,15 @@
+CloudoraSignIn_CL
+| where UserPrincipalName =~ "daniel.reeve@cloudora.io"
+| where Country =~ "Nigeria" or City =~ "Lagos"
+| project
+    TimeGenerated,
+    UserPrincipalName,
+    IPAddress,
+    City,
+    Country,
+    AppDisplayName,
+    ResultType,
+    ResultDescription,
+    DeviceOS,
+    Browser
+| sort by TimeGenerated asc

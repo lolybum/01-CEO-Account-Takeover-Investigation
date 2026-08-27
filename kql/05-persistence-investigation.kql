@@ -1,0 +1,36 @@
+// ============================================================
+// Persistence Investigation
+// CEO Account Takeover - Cloudora
+// Target: daniel.reeve@cloudora.io
+// ============================================================
+
+// Query 1 - Suspicious MFA / Authenticator Registration
+
+CloudoraAudit_CL
+| where TargetUser =~ "daniel.reeve@cloudora.io"
+| where ActivityDisplayName contains "registered security"
+| project
+    TimeGenerated,
+    ActivityDisplayName,
+    InitiatedBy,
+    TargetUser,
+    IPAddress,
+    Result,
+    Details
+| sort by TimeGenerated asc
+
+
+// Query 2 - Suspicious Inbox Rule Creation
+
+CloudoraAudit_CL
+| where TargetUser =~ "daniel.reeve@cloudora.io"
+| where ActivityDisplayName contains "inbox rule"
+| project
+    TimeGenerated,
+    ActivityDisplayName,
+    InitiatedBy,
+    TargetUser,
+    IPAddress,
+    Result,
+    Details
+| sort by TimeGenerated asc

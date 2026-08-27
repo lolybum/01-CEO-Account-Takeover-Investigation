@@ -1,0 +1,39 @@
+// ============================================================
+// 07 - Incident Timeline
+// CEO Account Takeover Investigation
+// Target: daniel.reeve@cloudora.io
+// Suspicious IP: 102.89.44.17
+// ============================================================
+
+let TargetUPN = "daniel.reeve@cloudora.io";
+let SuspiciousIP = "102.89.44.17";
+
+let SignInEvents =
+    CloudoraSignIn_CL
+    | where UserPrincipalName =~ TargetUPN
+    | where IPAddress == SuspiciousIP
+    | project
+        TimeGenerated,
+        EventType = "Sign-in",
+        Activity = AppDisplayName,
+        IPAddress,
+        Location = strcat(City, ", ", Country),
+        Result = ResultDescription,
+        Details = strcat("DeviceOS=", DeviceOS, "; Browser=", Browser);
+
+let AuditEvents =
+    CloudoraAudit_CL
+    | where TargetUser =~ TargetUPN
+       or InitiatedBy =~ TargetUPN
+    | where IPAddress == SuspiciousIP
+    | project
+        TimeGenerated,
+        EventType = "Audit",
+        Activity = ActivityDisplayName,
+        IPAddress,
+        Location = "",
+        Result,
+        Details;
+
+union SignInEvents, AuditEvents
+| sort by TimeGenerated asc

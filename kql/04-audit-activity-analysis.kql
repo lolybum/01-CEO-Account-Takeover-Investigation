@@ -1,0 +1,12 @@
+CloudoraAudit_CL
+| where TargetUser =~ "daniel.reeve@cloudora.io"
+   or InitiatedBy =~ "daniel.reeve@cloudora.io"
+| project
+    TimeGenerated,
+    ActivityDisplayName,
+    InitiatedBy,
+    TargetUser,
+    IPAddress,
+    Result,
+    Details
+| sort by TimeGenerated asc

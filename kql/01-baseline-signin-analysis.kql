@@ -1,0 +1,13 @@
+CloudoraSignIn_CL
+| sort by TimeGenerated desc
+| project
+    TimeGenerated,
+    UserPrincipalName,
+    IPAddress,
+    City,
+    Country,
+    AppDisplayName,
+    ResultType,
+    ResultDescription,
+    DeviceOS,
+    Browser
