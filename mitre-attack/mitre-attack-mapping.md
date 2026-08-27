@@ -69,7 +69,7 @@ This activity is consistent with **T1098 - Account Manipulation**.
 
 ---
 
-## T1114 - Email Collection / Mailbox Access
+
 
 **Tactic:** Collection
 
@@ -107,8 +107,7 @@ The inbox rule appears designed to conceal finance-related messages from the acc
 
 The Outlook access and mailbox-rule manipulation are relevant to email-focused post-compromise activity.
 
-The evidence supports mapping the mailbox activity to email collection/mailbox abuse behavior, while the exact attacker objective should not be overstated beyond the observed logs.
-
+The evidence confirms post-compromised mailbox manipulation through creation of a suspicious inbox rule. However, the available telemetry does not confirm that email content was collected or exfiltrated; therefore no email collection is asserted.
 ---
 
 ## Attack Progression
@@ -141,4 +140,3 @@ The evidence supports mapping the mailbox activity to email collection/mailbox a
 |---|---|---|
 | Valid Accounts | T1078 | Successful access using Daniel Reeve's account |
 | Account Manipulation | T1098 | New authenticator registered after compromise |
-| Email Collection / Mailbox Activity | T1114 | Outlook Web access and suspicious inbox-rule activity |

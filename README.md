@@ -207,7 +207,6 @@ Additional IOC documentation is available in:
 |---|---|---|
 | Valid Accounts | T1078 | Successful access using Daniel Reeve's account |
 | Account Manipulation | T1098 | Additional Authenticator method registered after compromise |
-| Email Collection | T1114 | Outlook Web access and suspicious mailbox-rule activity |
 
 The mapping is based on behavior directly supported by the available telemetry. Attacker intent beyond the observed evidence is not asserted.
 
