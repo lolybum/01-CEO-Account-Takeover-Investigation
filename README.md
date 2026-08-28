@@ -148,7 +148,7 @@ This behavior is consistent with post-compromise mailbox manipulation designed t
 Sign-in and audit telemetry were combined to reconstruct the attack chronologically.
 
 ![Unified Incident Timeline](screenshots/timeline/06-unified-incident-timeline.png)
-
+Detailed timeline artifact: [`timeline/incident-timeline.md`](timeline/incident-timeline.md)
 ### Attack Progression
 
 | Time (UTC) | Event |
