@@ -33,6 +33,7 @@ Analysis of the suspicious IP also identified authentication attempts against mu
 
 The available evidence confirms compromise of Daniel Reeve's account and demonstrates post-compromise persistence and mailbox manipulation.
 
+The available telemetry does not independently establish that email contents were successfully collected or exfiltrated. Other accounts observed in the broader failed-authentication activity require additional investigation before compromise can be asserted.
 ---
 
 # 🔎 Investigation Methodology
