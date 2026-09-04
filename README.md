@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="assets/ceo-account-takeover-banner.png" alt="Cloudora CEO Account Takeover Investigation" width="100%">
+</p>
+
+
 # 🔐 CEO Account Takeover Investigation — Cloudora
 
 > Tier 1 SOC investigation of a suspected executive account takeover using Microsoft Sentinel / Azure Data Explorer, KQL, authentication telemetry, audit logs, incident response methodology, and MITRE ATT&CK mapping.
